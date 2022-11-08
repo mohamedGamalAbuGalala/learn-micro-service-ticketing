@@ -9,11 +9,14 @@ manifests:
     - ./infra/k8s/*
 
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    concurrency: 1
+    projectId: snappy-provider-368019
   
   artifacts:
-    - image: bugalala/auth
+    - image: gcr.io/snappy-provider-368019/auth
       context: auth
       docker:
         dockerfile: Dockerfile
