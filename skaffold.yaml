@@ -1,0 +1,27 @@
+apiVersion: skaffold/v3alpha1
+kind: Config
+
+metadata:
+  name: ticketing
+
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+
+build:
+  local:
+    push: false
+  
+  artifacts:
+    - image: bugalala/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+
+deploy:
+  kubectl: {}
+    
