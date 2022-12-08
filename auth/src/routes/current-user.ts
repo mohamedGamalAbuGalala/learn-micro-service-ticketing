@@ -8,7 +8,7 @@ router.get(
   currentUser,
   (req, res) => {
     return res.send({
-      currentUser: req.currentUser,
+      currentUser: req.currentUser || null,
     });
   }
 );
