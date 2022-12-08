@@ -53,7 +53,7 @@ router.post(
     // Generate JWT token
     const userJwt = jwt.sign(
       { id: user.id, email: user.email },
-      "asdf"
+      process.env.JWT_KEY!
     );
 
     // Store JWT in session
