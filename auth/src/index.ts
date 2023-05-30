@@ -2,7 +2,7 @@ import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import express from "express";
 import "express-async-errors";
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
@@ -38,9 +38,7 @@ const start = async () => {
   // }
 
   try {
-    // await mongoose.connect(
-    //   "mongodb://auth-mongo-srv:27017/auth"
-    // );
+    await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("Connected to MongoDB");
   } catch (error) {
     console.log(error);
