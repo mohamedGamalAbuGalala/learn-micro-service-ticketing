@@ -10,10 +10,7 @@ export abstract class CustomError extends Error {
     super(message);
 
     // only because we are extending a built in class (Error)
-    Object.setPrototypeOf(
-      this,
-      CustomError.prototype
-    );
+    Object.setPrototypeOf(this, CustomError.prototype);
   }
 
   abstract serializeErrors(): SerializedFieldReturn[];

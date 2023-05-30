@@ -6,10 +6,7 @@ export class NotFoundError extends CustomError {
     super("Route not found");
 
     // only because we are extending a built in class (Error)
-    Object.setPrototypeOf(
-      this,
-      NotFoundError.prototype
-    );
+    Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 
   serializeErrors() {

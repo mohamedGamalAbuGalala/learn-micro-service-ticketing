@@ -1,17 +1,14 @@
 import express from "express";
 import { CustomError } from "../errors/custom-error";
-import { DatabaseConnectionError } from "../errors/database-connection-error";
 
 export const errorHandler = (
   err: unknown,
-  req: express.Request,
+  _req: express.Request,
   res: express.Response,
-  next: express.NextFunction
+  _next: express.NextFunction
 ) => {
   if (err instanceof CustomError) {
-    return res
-      .status(err.statusCode)
-      .send({ errors: err.serializeErrors() });
+    return res.status(err.statusCode).send({ errors: err.serializeErrors() });
   }
 
   if (err instanceof Error) {

@@ -1,7 +1,4 @@
-import {
-  CustomError,
-  SerializedFieldReturn,
-} from "./custom-error";
+import { CustomError } from "./custom-error";
 
 export class NotAuthorizedError extends CustomError {
   statusCode = 401;
@@ -10,13 +7,10 @@ export class NotAuthorizedError extends CustomError {
     super("Not Authorized!");
 
     // only because we are extending a built in class (Error)
-    Object.setPrototypeOf(
-      this,
-      NotAuthorizedError.prototype
-    );
+    Object.setPrototypeOf(this, NotAuthorizedError.prototype);
   }
 
-  serializeErrors(): SerializedFieldReturn[] {
+  serializeErrors() {
     return [
       {
         message: "Not Authorized!",
