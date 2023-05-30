@@ -1,11 +1,11 @@
-import express from "express";
+import { NextFunction, Request, Response } from "express";
 import { CustomError } from "../errors/custom-error";
 
 export const errorHandler = (
-  err: unknown,
-  _req: express.Request,
-  res: express.Response,
-  _next: express.NextFunction
+  err: Error,
+  _req: Request,
+  res: Response,
+  _next: NextFunction
 ) => {
   if (err instanceof CustomError) {
     return res.status(err.statusCode).send({ errors: err.serializeErrors() });

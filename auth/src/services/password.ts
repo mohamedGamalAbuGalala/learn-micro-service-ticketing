@@ -1,4 +1,4 @@
-import { scryptSync, randomBytes } from "crypto";
+import { randomBytes, scryptSync } from "crypto";
 
 export class Password {
   static toHash(password: string) {
@@ -8,17 +8,9 @@ export class Password {
     return `${buf.toString("hex")}.${salt}`;
   }
 
-  static compare(
-    storedPassword: string,
-    suppliedPassword: string
-  ) {
-    const [hashedPassword, salt] =
-      storedPassword.split(".");
-    const buf = scryptSync(
-      suppliedPassword,
-      salt,
-      64
-    );
+  static compare(storedPassword: string, suppliedPassword: string) {
+    const [hashedPassword, salt] = storedPassword.split(".");
+    const buf = scryptSync(suppliedPassword, salt, 64);
 
     return buf.toString("hex") === hashedPassword;
   }

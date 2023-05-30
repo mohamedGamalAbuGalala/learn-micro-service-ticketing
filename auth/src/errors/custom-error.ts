@@ -1,4 +1,4 @@
-export type SerializedFieldReturn = {
+type SerializedFieldReturn = {
   message: string;
   field?: string;
 };
