@@ -2,7 +2,7 @@ import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import express from "express";
 import "express-async-errors";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
@@ -33,14 +33,14 @@ app.all("*", async () => {
 app.use(errorHandler);
 
 const start = async () => {
-  if (!process.env.JWT_KEY) {
-    throw new Error("JWT_KEY must be defined!!");
-  }
-  
+  // if (!process.env.JWT_KEY) {
+  //   throw new Error("JWT_KEY must be defined!!");
+  // }
+
   try {
-    await mongoose.connect(
-      "mongodb://auth-mongo-srv:27017/auth"
-    );
+    // await mongoose.connect(
+    //   "mongodb://auth-mongo-srv:27017/auth"
+    // );
     console.log("Connected to MongoDB");
   } catch (error) {
     console.log(error);

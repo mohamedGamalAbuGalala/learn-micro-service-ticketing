@@ -14,12 +14,12 @@ spec:
       containers:
         - name: auth
           image: bugalala/auth
-          env:
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-secret
-                  key: JWT_KEY
+          # env:
+          #   - name: JWT_KEY
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: jwt-secret
+          #         key: JWT_KEY
           resources:
             limits:
               memory: "256Mi"
