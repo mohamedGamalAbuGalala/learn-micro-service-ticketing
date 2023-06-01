@@ -10,20 +10,13 @@ const router = express.Router();
 router.post(
   "/api/users/signup",
   [
-    body("email")
-      .isEmail()
-      .withMessage("Email must be valid"),
+    body("email").isEmail().withMessage("Email must be valid"),
     body("password")
       .isLength({ min: 4, max: 20 })
-      .withMessage(
-        "Password must be between 4 and 20 characters"
-      ),
+      .withMessage("Password must be between 4 and 20 characters"),
   ],
   validateRequest,
-  async (
-    req: express.Request,
-    res: express.Response
-  ) => {
+  async (req: express.Request, res: express.Response) => {
     const { email, password } = req.body;
 
     const existingUser = await User.exists({
@@ -31,9 +24,7 @@ router.post(
     });
 
     if (existingUser) {
-      throw new BadRequestError(
-        "Email already exists"
-      );
+      throw new BadRequestError("Email already exists");
     }
 
     console.log("creating a new user");
@@ -42,13 +33,13 @@ router.post(
     await user.save();
 
     // Generate JWT token
-    // const userJwt = jwt.sign(
-    //   { id: user.id, email: user.email },
-    //   process.env.JWT_KEY!
-    // );
+    const userJwt = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_KEY!
+    );
 
     // Store JWT in session
-    // req.session = { jwt: userJwt };
+    req.session = { jwt: userJwt };
 
     return res.status(201).send(user);
   }
