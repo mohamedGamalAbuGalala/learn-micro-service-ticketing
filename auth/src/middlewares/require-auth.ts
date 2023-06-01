@@ -3,7 +3,7 @@ import { NotAuthorizedError } from "../errors/not-authorized-error";
 
 export const requireAuth = (
   req: express.Request,
-  res: express.Response,
+  _res: express.Response,
   next: express.NextFunction
 ) => {
   if (!req.currentUser) {
