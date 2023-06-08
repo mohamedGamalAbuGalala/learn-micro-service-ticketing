@@ -10,7 +10,6 @@ interface Props {
   } | null;
 }
 const Home: NextPage<Props> = ({ currentUser }) => {
-  console.log(currentUser);
   return (
     <>
       <Head>
