@@ -6,6 +6,14 @@ await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
 const config = {
+  webpack: (config) => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    };
+    return config;
+  },
+
   reactStrictMode: true,
 
   /**
@@ -17,6 +25,25 @@ const config = {
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
+  },
+
+  images: {
+    dangerouslyAllowSVG: true,
+
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/photo-:id",
+      },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+        port: "",
+        pathname: "/img/**/*",
+      },
+    ],
   },
 };
 export default config;

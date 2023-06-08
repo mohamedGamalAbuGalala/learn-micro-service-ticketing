@@ -2,6 +2,16 @@ apiVersion: skaffold/v4beta5
 kind: Config
 build:
   artifacts:
+    - image: bugalala/client
+      context: client
+      sync:
+        manual:
+          - src: src/**/*.tsx
+            dest: .
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: bugalala/auth
       context: auth
       sync:
