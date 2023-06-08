@@ -29,7 +29,6 @@ export const currentUser = (
       process.env.JWT_KEY!
     ) as UserPayload;
 
-    console.log("User is signed in!");
     req.currentUser = payload;
   } catch (error) {}
 

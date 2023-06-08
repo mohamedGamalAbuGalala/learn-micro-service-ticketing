@@ -27,8 +27,6 @@ router.post(
       throw new BadRequestError("Email already exists");
     }
 
-    console.log("creating a new user");
-
     const user = User.build({ email, password });
     await user.save();
 
