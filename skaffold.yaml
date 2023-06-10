@@ -20,6 +20,8 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
+        buildArgs:
+          NPM_TOKEN: "{{.NPM_TOKEN}}"
   local:
     push: false
 manifests:

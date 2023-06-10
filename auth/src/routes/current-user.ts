@@ -1,5 +1,5 @@
+import { currentUser } from "@galala-study/gitix-common";
 import express from "express";
-import { currentUser } from "../middlewares/current-user";
 
 const router = express.Router();
 
