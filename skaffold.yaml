@@ -22,6 +22,16 @@ build:
         dockerfile: Dockerfile
         buildArgs:
           NPM_TOKEN: "{{.NPM_TOKEN}}"
+    - image: bugalala/tickets
+      context: tickets
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+        buildArgs:
+          NPM_TOKEN: "{{.NPM_TOKEN}}"
   local:
     push: false
 manifests:
