@@ -28,11 +28,16 @@ afterAll(async () => {
 
 declare global {
   var signin: () => string[];
+  var generateId: () => string;
 }
+
+global.generateId = () => {
+  return new mongoose.Types.ObjectId().toHexString();
+};
 
 global.signin = () => {
   const payload = {
-    id: "1234",
+    id: global.generateId(),
     email: "test@test.com",
   };
 
